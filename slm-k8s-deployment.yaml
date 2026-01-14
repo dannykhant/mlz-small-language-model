@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slm-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: slm
+  template:
+    metadata:
+      labels:
+        app: slm
+    spec:
+      containers:
+      - name: mlz-slm
+        image: mlz-slm:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "2000m"
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: slm-service
+spec:
+  type: NodePort
+  selector:
+    app: slm
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30001
