@@ -10,3 +10,10 @@ dependencies = [
     "onnxruntime>=1.23.2",
     "tokenizers>=0.22.2",
 ]
+
+[dependency-groups]
+dev = [
+    "datasets>=4.4.2",
+    "keras>=3.13.0",
+    "tensorflow>=2.20.0",
+]
