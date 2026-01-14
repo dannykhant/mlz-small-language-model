@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./models:/app/models
+    environment:
+      - RUST_LOG=info
+      - MODEL_PATH=/app/models/tiny-stories-slm-quantized.onnx
