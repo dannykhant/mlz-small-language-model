@@ -1,6 +1,6 @@
 import requests
 
-url = 'http://localhost:8080/generate'
+url = 'http://localhost:3000/generate'
 
 request = {
     "prompt": "Once upon a time, lily found",
